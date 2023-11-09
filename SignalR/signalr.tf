@@ -1,3 +1,10 @@
+#Run this 2 commands before running the SignalR terraform code
+
+# az provider register --namespace Microsoft.SignalRService
+# az provider show --namespace Microsoft.SignalRService --query "registrationState"
+
+
+
 data "azurerm_resource_group" "existing_resource_group" {
   name = "rg-testing-shivam-poc"
 }
