@@ -103,3 +103,12 @@ resource "azurerm_iothub" "iothub_poc" {
     purpose = "poc"
   }
 }
+
+######### Mapping a role to IotHub ControlPlane ###################
+######## The RoleName is IotHub Data Contributor Role ##################
+
+resource "azurerm_role_assignment" "iothub_data_contributor" {
+  scope                = azurerm_iothub.iothub_poc.id
+  role_definition_name = "IoT Hub Data Contributor"
+  principal_id         = "22513a8e-8df6-48f9-b97b-5482c438404a"  # Replace with the object_id of the user or service principal
+}
