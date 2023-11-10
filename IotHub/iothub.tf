@@ -112,3 +112,12 @@ resource "azurerm_role_assignment" "iothub_data_contributor" {
   role_definition_name = "IoT Hub Data Contributor"
   principal_id         = "22513a8e-8df6-48f9-b97b-5482c438404a"  # Replace with the object_id of the user or service principal
 }
+
+resource "azurerm_iothub_shared_access_policy" "shared_policy" {
+  name                = "edgyneer-policy"
+  resource_group_name = data.azurerm_resource_group.existing_resource_group.name
+  iothub_name         = azurerm_iothub.iothub_poc.name
+
+  registry_read  = true
+  registry_write = true
+}
